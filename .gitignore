@@ -9,7 +9,3 @@ __pycache__/
 # Test data #
 #############
 test/test_data/
-
-# "To Do" list #
-#############
-.todo
