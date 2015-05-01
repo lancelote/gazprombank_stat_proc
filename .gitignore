@@ -1,0 +1,15 @@
+# Pycharm #
+###########
+.idea/
+
+# Python #
+##########
+__pycache__/
+
+# Test data #
+#############
+test/test_data/
+
+# "To Do" list #
+#############
+.todo
