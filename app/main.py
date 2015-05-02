@@ -1,10 +1,21 @@
 import os
 import zipfile
+from codecs import open
 
 
 class Statement():
 
-    pass
+    def __init__(self, text, date):
+        self.text = text
+        self.date = date
+
+
+def is_number(s):
+    try:
+        float(s)
+        return True
+    except ValueError:
+        return False
 
 
 def get_files(directory):
@@ -24,11 +35,38 @@ def unzip(file, directory):
 
 
 def process(file):
-    pass
+    # Retrieve file text
+    text = []
+    for line in file:
+        text.append(line)
+
+    # File date
+    date = {}
+    if is_number(text[6][9]):
+        date["day"] = text[6][9:11]
+    else:
+        date["day"] = text[6][10:11]
+    date["month"] = text[6][12:14]
+    date["year"] = text[6][15:19]
+
+    # Create a statement
+    statement = Statement(text, date)
+
+    return statement
 
 
-def write(file):
-    pass
+def write(statement, directory):
+    file_path = os.path.join(directory, "processed", statement.date["year"], statement.date["month"])
+    file_name = statement.date["day"] + ".txt"
+
+    # Create directory tree is needed
+    if not os.path.exists(file_path):
+        os.makedirs(file_path)
+
+    # Create a statement file
+    with open(os.path.join(file_path, file_name), "w+", encoding="utf-8") as file:
+        for line in statement.text:
+            file.write("%s" % line)
 
 
 def main(directory):
@@ -47,5 +85,9 @@ def main(directory):
 
     # Process and write unzipped files
     for unzipped_file in unzipped_files:
-        statement = process(unzipped_file)
-        write(statement)
+        with open(os.path.join(directory, "unzipped", unzipped_file), "r", encoding="cp1251") as file:
+            statement = process(file)
+        write(statement, directory)
+
+
+main("test/test_data/test_statements")
