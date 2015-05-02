@@ -8,7 +8,8 @@ file
 
 ## ToDo list
 
-- [ ] full test coverage
+- [ ] print provisional results to user
+- [x] full test coverage
 
 ## Project plan
 
