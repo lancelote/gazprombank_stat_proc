@@ -8,4 +8,4 @@ file
 
 ## Project plan
 
-![Project plan][./assets/plan.png]
+![Project plan](./assets/plan.png)
