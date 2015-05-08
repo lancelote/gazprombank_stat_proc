@@ -11,6 +11,7 @@ class Statement():
 
 
 def is_number(s):
+    # ToDo : refactor to isdigit
     try:
         float(s)
         return True

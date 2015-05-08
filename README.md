@@ -2,12 +2,11 @@
 
 ## Description
 
-Simple utility for auto processing gazprombank statements (zip files) and
-creating bank transfer order files for each transaction plus a summary statements
-file
+Simple utility for auto processing gazprombank statements (zip files) and creating bank transfer order files for each transaction plus a summary file
 
 ## ToDo list
 
+- [ ] check for any missing statements
 - [ ] print provisional results to user
 - [x] full test coverage
 
